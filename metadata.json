@@ -1,0 +1,6 @@
+{
+  "name": "Brain Game Puzzle",
+  "description": "Mobile game company website and full CMS for Brain Game Puzzle.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

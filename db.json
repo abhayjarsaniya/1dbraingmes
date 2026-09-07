@@ -1,0 +1,852 @@
+{
+  "games": [
+    {
+      "id": "g1",
+      "name": "SHIFT",
+      "slug": "shift",
+      "tagline": "One tap. Unexpected consequences.",
+      "shortDescription": "Test your reflexes and timing in this minimalist puzzle game.",
+      "longDescription": "SHIFT is a premium brain game puzzle that tests your focus. With one tap, everything changes. Prepare for unexpected consequences as you navigate through increasingly complex levels.",
+      "category": "Puzzle",
+      "gameType": "Arcade Puzzle",
+      "difficulty": "Medium",
+      "tags": [
+        "minimalist",
+        "reflexes",
+        "focus"
+      ],
+      "icon": "/screenshots/shift/Screenshot_20260902-173618.png",
+      "coverImage": "/screenshots/shift/Screenshot_20260902-173618.png",
+      "screenshots": [
+        "/screenshots/shift/Screenshot_20260902-173618.png",
+        "/screenshots/shift/Screenshot_20260902-173629.png",
+        "/screenshots/shift/Screenshot_20260902-173636.png",
+        "/screenshots/shift/Screenshot_20260902-173643.png",
+        "/screenshots/shift/Screenshot_20260902-173702.png",
+        "/screenshots/shift/Screenshot_20260902-173730.png",
+        "/screenshots/shift/Screenshot_20260902-173738.png"
+      ],
+      "features": [
+        {
+          "id": "f1",
+          "title": "One Tap Controls",
+          "description": "Simple to learn, impossible to master.",
+          "icon": "MousePointerClick"
+        }
+      ],
+      "howToPlay": [
+        {
+          "id": "h1",
+          "title": "Start.",
+          "description": "Tap to begin the sequence.",
+          "image": ""
+        },
+        {
+          "id": "h2",
+          "title": "Think.",
+          "description": "Observe the pattern.",
+          "image": ""
+        },
+        {
+          "id": "h3",
+          "title": "Act.",
+          "description": "Tap the screen to shift the player character.",
+          "image": ""
+        }
+      ],
+      "accentColor": "#FF3D00",
+      "infoStrip": {
+        "playStyle": "Portrait",
+        "platform": "iOS & Android",
+        "session": "1-3 mins"
+      },
+      "whatIsIt": [
+        "Quick decisions",
+        "Simple controls",
+        "Unexpected outcomes",
+        "Progressive challenges",
+        "Replayable gameplay"
+      ],
+      "audienceCards": [
+        "Puzzle Lovers",
+        "Challenge Seekers",
+        "Casual Players"
+      ],
+      "whyPlay": {
+        "heading": "One More Round.",
+        "subheading": "Easy to understand. Hard to put down.",
+        "points": [
+          "Think Faster",
+          "React Smarter",
+          "Improve Your Focus",
+          "Beat Your Best"
+        ]
+      },
+      "sectionOrder": [
+        {
+          "id": "s1",
+          "type": "hero",
+          "visible": true,
+          "order": 1
+        },
+        {
+          "id": "s2",
+          "type": "infoStrip",
+          "visible": true,
+          "order": 2
+        },
+        {
+          "id": "s3",
+          "type": "whatIsIt",
+          "visible": true,
+          "order": 3
+        },
+        {
+          "id": "s4",
+          "type": "howItWorks",
+          "visible": true,
+          "order": 4
+        },
+        {
+          "id": "s5",
+          "type": "features",
+          "visible": true,
+          "order": 5
+        },
+        {
+          "id": "s6",
+          "type": "screenshots",
+          "visible": true,
+          "order": 6
+        },
+        {
+          "id": "s7",
+          "type": "audience",
+          "visible": true,
+          "order": 7
+        },
+        {
+          "id": "s8",
+          "type": "whyPlay",
+          "visible": true,
+          "order": 8
+        },
+        {
+          "id": "s9",
+          "type": "storeCta",
+          "visible": true,
+          "order": 9
+        },
+        {
+          "id": "s10",
+          "type": "moreGames",
+          "visible": true,
+          "order": 10
+        }
+      ],
+      "audience": "Everyone",
+      "storeLinks": {
+        "googlePlay": {
+          "enabled": true,
+          "buttonText": "Google Play",
+          "url": "#"
+        },
+        "appStore": {
+          "enabled": true,
+          "buttonText": "App Store",
+          "url": "#"
+        }
+      },
+      "status": "Published",
+      "featured": true,
+      "sortOrder": 1,
+      "privacyPolicy": {
+        "enabled": false,
+        "title": "Privacy Policy",
+        "content": "",
+        "lastUpdated": "",
+        "slug": "shift-privacy"
+      },
+      "termsAndConditions": {
+        "enabled": false,
+        "title": "Terms & Conditions",
+        "content": "",
+        "lastUpdated": "",
+        "slug": "shift-terms"
+      },
+      "whatsapp": {
+        "enabled": false,
+        "message": "Hi, I want to know more about Shift.",
+        "number": ""
+      },
+      "seo": {
+        "title": "SHIFT - 1D Brain Games",
+        "description": "Play SHIFT now.",
+        "noIndex": false
+      },
+      "createdAt": "2026-09-01T11:40:32.486Z",
+      "updatedAt": "2026-09-01T11:40:32.486Z"
+    },
+    {
+      "id": "g2",
+      "name": "Paper Plane Puzzle",
+      "slug": "paper-plane-puzzle",
+      "tagline": "Plan the path. Fold your strategy.",
+      "shortDescription": "Navigate beautiful paper environments in this calm puzzle game.",
+      "longDescription": "Plan your flight path carefully. Paper Plane Puzzle is a relaxing journey through beautifully crafted paper worlds.",
+      "category": "Focus",
+      "gameType": "Strategy Puzzle",
+      "difficulty": "Hard",
+      "tags": [
+        "relaxing",
+        "strategy",
+        "beautiful"
+      ],
+      "icon": "/screenshots/paper-plane-puzzle/icon.png",
+      "coverImage": "/screenshots/paper-plane-puzzle/cover.png",
+      "screenshots": [
+        "/screenshots/paper-plane-puzzle/gameplay.png",
+        "/screenshots/paper-plane-puzzle/level_complete.png",
+        "/screenshots/paper-plane-puzzle/leave_level.png",
+        "/screenshots/paper-plane-puzzle/settings.png",
+        "/screenshots/paper-plane-puzzle/02_core_mechanic.png",
+        "/screenshots/paper-plane-puzzle/03_levels.png"
+      ],
+      "features": [
+        {
+          "id": "f2",
+          "title": "Multiple Levels",
+          "description": "Explore beautifully crafted paper worlds.",
+          "icon": "Map"
+        }
+      ],
+      "howToPlay": [
+        {
+          "id": "p1",
+          "title": "Plan.",
+          "description": "Observe the environment.",
+          "image": ""
+        },
+        {
+          "id": "p2",
+          "title": "Fold.",
+          "description": "Adjust your trajectory.",
+          "image": ""
+        },
+        {
+          "id": "p3",
+          "title": "Fly.",
+          "description": "Launch and watch it glide.",
+          "image": ""
+        }
+      ],
+      "accentColor": "#00E5FF",
+      "infoStrip": {
+        "playStyle": "Landscape",
+        "platform": "iOS & Android",
+        "session": "5-10 mins"
+      },
+      "whatIsIt": [
+        "Strategic folding",
+        "Calm environment",
+        "Beautiful worlds",
+        "Physics-based puzzles",
+        "Relaxing gameplay"
+      ],
+      "audienceCards": [
+        "Strategy Thinkers",
+        "Puzzle Lovers",
+        "Casual Players"
+      ],
+      "whyPlay": {
+        "heading": "Find Your Flow.",
+        "subheading": "Relaxing but challenging.",
+        "points": [
+          "Think Ahead",
+          "Unwind",
+          "Solve Puzzles",
+          "Explore Worlds"
+        ]
+      },
+      "sectionOrder": [
+        {
+          "id": "s1",
+          "type": "hero",
+          "visible": true,
+          "order": 1
+        },
+        {
+          "id": "s2",
+          "type": "infoStrip",
+          "visible": true,
+          "order": 2
+        },
+        {
+          "id": "s3",
+          "type": "whatIsIt",
+          "visible": true,
+          "order": 3
+        },
+        {
+          "id": "s4",
+          "type": "howItWorks",
+          "visible": true,
+          "order": 4
+        },
+        {
+          "id": "s5",
+          "type": "features",
+          "visible": true,
+          "order": 5
+        },
+        {
+          "id": "s6",
+          "type": "screenshots",
+          "visible": true,
+          "order": 6
+        },
+        {
+          "id": "s7",
+          "type": "audience",
+          "visible": true,
+          "order": 7
+        },
+        {
+          "id": "s8",
+          "type": "whyPlay",
+          "visible": true,
+          "order": 8
+        },
+        {
+          "id": "s9",
+          "type": "storeCta",
+          "visible": true,
+          "order": 9
+        },
+        {
+          "id": "s10",
+          "type": "moreGames",
+          "visible": true,
+          "order": 10
+        }
+      ],
+      "audience": "Everyone",
+      "storeLinks": {
+        "googlePlay": {
+          "enabled": true,
+          "buttonText": "Google Play",
+          "url": "#"
+        },
+        "appStore": {
+          "enabled": true,
+          "buttonText": "App Store",
+          "url": "#"
+        }
+      },
+      "status": "Published",
+      "featured": true,
+      "sortOrder": 2,
+      "privacyPolicy": {
+        "enabled": false,
+        "title": "",
+        "content": "",
+        "lastUpdated": "",
+        "slug": ""
+      },
+      "termsAndConditions": {
+        "enabled": false,
+        "title": "",
+        "content": "",
+        "lastUpdated": "",
+        "slug": ""
+      },
+      "whatsapp": {
+        "enabled": false,
+        "message": "",
+        "number": ""
+      },
+      "seo": {
+        "title": "Paper Plane Puzzle",
+        "description": "",
+        "noIndex": false
+      },
+      "createdAt": "2026-09-01T11:40:32.486Z",
+      "updatedAt": "2026-09-01T11:40:32.486Z"
+    },
+    {
+      "id": "g3",
+      "name": "MIND",
+      "slug": "mind",
+      "tagline": "The Inner Journey",
+      "shortDescription": "Explore the depths of consciousness in this abstract puzzle experience.",
+      "longDescription": "MIND takes you on a journey inward. Solve abstract puzzles and discover the hidden mechanics of the mind.",
+      "category": "Brain",
+      "gameType": "Abstract Puzzle",
+      "difficulty": "Medium",
+      "tags": [
+        "abstract",
+        "journey",
+        "mind"
+      ],
+      "icon": "/screenshots/mind/icon.png",
+      "coverImage": "/screenshots/mind/cover.png",
+      "screenshots": [
+        "/screenshots/mind/splash.png",
+        "/screenshots/mind/icon.png"
+      ],
+      "features": [
+        {
+          "id": "f3",
+          "title": "Abstract Puzzles",
+          "description": "Mind-bending mechanics to solve.",
+          "icon": "Brain"
+        }
+      ],
+      "howToPlay": [
+        {
+          "id": "m1",
+          "title": "Focus.",
+          "description": "Clear your mind.",
+          "image": ""
+        },
+        {
+          "id": "m2",
+          "title": "Interact.",
+          "description": "Manipulate abstract objects.",
+          "image": ""
+        },
+        {
+          "id": "m3",
+          "title": "Understand.",
+          "description": "Discover the hidden logic.",
+          "image": ""
+        }
+      ],
+      "accentColor": "#D500F9",
+      "infoStrip": {
+        "playStyle": "Portrait",
+        "platform": "iOS & Android",
+        "session": "10+ mins"
+      },
+      "whatIsIt": [
+        "Abstract logic",
+        "Deep focus",
+        "Atmospheric audio",
+        "Intriguing mechanics",
+        "Progressive discovery"
+      ],
+      "audienceCards": [
+        "Focus Players",
+        "Puzzle Lovers",
+        "Challenge Seekers"
+      ],
+      "whyPlay": {
+        "heading": "Expand Your Mind.",
+        "subheading": "A journey into abstract thought.",
+        "points": [
+          "Train Focus",
+          "Discover Logic",
+          "Immersive Audio",
+          "Deep Puzzles"
+        ]
+      },
+      "sectionOrder": [
+        {
+          "id": "s1",
+          "type": "hero",
+          "visible": true,
+          "order": 1
+        },
+        {
+          "id": "s2",
+          "type": "infoStrip",
+          "visible": true,
+          "order": 2
+        },
+        {
+          "id": "s3",
+          "type": "whatIsIt",
+          "visible": true,
+          "order": 3
+        },
+        {
+          "id": "s4",
+          "type": "howItWorks",
+          "visible": true,
+          "order": 4
+        },
+        {
+          "id": "s5",
+          "type": "features",
+          "visible": true,
+          "order": 5
+        },
+        {
+          "id": "s6",
+          "type": "screenshots",
+          "visible": true,
+          "order": 6
+        },
+        {
+          "id": "s7",
+          "type": "audience",
+          "visible": true,
+          "order": 7
+        },
+        {
+          "id": "s8",
+          "type": "whyPlay",
+          "visible": true,
+          "order": 8
+        },
+        {
+          "id": "s9",
+          "type": "storeCta",
+          "visible": true,
+          "order": 9
+        },
+        {
+          "id": "s10",
+          "type": "moreGames",
+          "visible": true,
+          "order": 10
+        }
+      ],
+      "audience": "Mature",
+      "storeLinks": {
+        "googlePlay": {
+          "enabled": true,
+          "buttonText": "Google Play",
+          "url": "#"
+        },
+        "appStore": {
+          "enabled": true,
+          "buttonText": "App Store",
+          "url": "#"
+        }
+      },
+      "status": "Published",
+      "featured": true,
+      "sortOrder": 3,
+      "privacyPolicy": {
+        "enabled": false,
+        "title": "",
+        "content": "",
+        "lastUpdated": "",
+        "slug": ""
+      },
+      "termsAndConditions": {
+        "enabled": false,
+        "title": "",
+        "content": "",
+        "lastUpdated": "",
+        "slug": ""
+      },
+      "whatsapp": {
+        "enabled": false,
+        "message": "",
+        "number": ""
+      },
+      "seo": {
+        "title": "MIND - The Inner Journey",
+        "description": "",
+        "noIndex": false
+      },
+      "createdAt": "2026-09-01T11:40:32.487Z",
+      "updatedAt": "2026-09-01T11:40:32.487Z"
+    }
+  ],
+  "pages": [
+    {
+      "id": "p_home",
+      "name": "Home",
+      "slug": "home",
+      "status": "Published",
+      "seo": {
+        "title": "1D Brain Games - Home",
+        "description": "Play with your mind."
+      },
+      "createdAt": "2026-09-01T11:40:32.487Z",
+      "updatedAt": "2026-09-01T11:40:32.487Z",
+      "sections": [
+        {
+          "id": "h_s1",
+          "type": "homeHero",
+          "title": "THINK.",
+          "description": "PLAY. REPEAT.",
+          "content": "Small puzzle games. Big ideas.",
+          "image": "",
+          "buttons": [
+            {
+              "text": "Explore Games",
+              "url": "/games",
+              "style": "primary"
+            }
+          ],
+          "visible": true,
+          "sortOrder": 1,
+          "settings": {}
+        },
+        {
+          "id": "h_s2",
+          "type": "threeWays",
+          "title": "Three Ways To Play",
+          "description": "",
+          "content": "",
+          "image": "",
+          "buttons": [],
+          "visible": true,
+          "sortOrder": 2,
+          "settings": {}
+        },
+        {
+          "id": "h_s3",
+          "type": "curiousMinds",
+          "title": "PLAY WITH YOUR MIND.",
+          "description": "Simple to start. Difficult to master.",
+          "content": "",
+          "image": "",
+          "buttons": [],
+          "visible": true,
+          "sortOrder": 3,
+          "settings": {}
+        },
+        {
+          "id": "h_s4",
+          "type": "bentoCollection",
+          "title": "Find Your Next Challenge.",
+          "description": "",
+          "content": "",
+          "image": "",
+          "buttons": [],
+          "visible": true,
+          "sortOrder": 4,
+          "settings": {}
+        },
+        {
+          "id": "h_s5",
+          "type": "whyWeBuild",
+          "title": "Why We Build Games",
+          "description": "Our core philosophy behind every mechanic we design.",
+          "content": "",
+          "image": "",
+          "buttons": [],
+          "visible": true,
+          "sortOrder": 5,
+          "settings": {}
+        }
+      ]
+    },
+    {
+      "id": "p_about",
+      "name": "About",
+      "slug": "about",
+      "status": "Published",
+      "seo": {
+        "title": "About Us - 1D Brain Games",
+        "description": "Learn more about us."
+      },
+      "createdAt": "2026-09-01T11:40:32.487Z",
+      "updatedAt": "2026-09-01T11:40:32.487Z",
+      "sections": [
+        {
+          "id": "a_s1",
+          "type": "aboutHero",
+          "title": "We build games for curious minds.",
+          "description": "",
+          "content": "",
+          "image": "",
+          "buttons": [],
+          "visible": true,
+          "sortOrder": 1,
+          "settings": {}
+        },
+        {
+          "id": "a_s2",
+          "type": "aboutStatement",
+          "title": "THINK. PLAY. REPEAT.",
+          "description": "",
+          "content": "We believe that the best games are the ones that challenge you to think differently. Our puzzles are designed to be accessible but deep.",
+          "image": "",
+          "buttons": [],
+          "visible": true,
+          "sortOrder": 2,
+          "settings": {}
+        }
+      ]
+    },
+    {
+      "id": "p_privacy",
+      "name": "Privacy Policy",
+      "slug": "privacy",
+      "status": "Published",
+      "seo": {
+        "title": "Privacy Policy",
+        "description": "Our privacy policy."
+      },
+      "createdAt": "2026-09-01T11:40:32.487Z",
+      "updatedAt": "2026-09-01T11:40:32.487Z",
+      "sections": [
+        {
+          "id": "pr_s1",
+          "type": "richText",
+          "title": "Privacy Policy",
+          "description": "Last updated: Today",
+          "content": "<p>Your privacy is important to us. This global privacy policy explains how we collect and use your data.</p>",
+          "image": "",
+          "buttons": [],
+          "visible": true,
+          "sortOrder": 1,
+          "settings": {}
+        }
+      ]
+    },
+    {
+      "id": "p_terms",
+      "name": "Terms of Service",
+      "slug": "terms",
+      "status": "Published",
+      "seo": {
+        "title": "Terms of Service",
+        "description": "Our terms of service."
+      },
+      "createdAt": "2026-09-01T11:40:32.487Z",
+      "updatedAt": "2026-09-01T11:40:32.487Z",
+      "sections": [
+        {
+          "id": "t_s1",
+          "type": "richText",
+          "title": "Terms of Service",
+          "description": "Last updated: Today",
+          "content": "<p>By using our games, you agree to these terms.</p>",
+          "image": "",
+          "buttons": [],
+          "visible": true,
+          "sortOrder": 1,
+          "settings": {}
+        }
+      ]
+    },
+    {
+      "id": "p_contact",
+      "name": "Contact",
+      "slug": "contact",
+      "status": "Published",
+      "seo": {
+        "title": "Contact Us",
+        "description": "Get in touch."
+      },
+      "createdAt": "2026-09-01T11:40:32.487Z",
+      "updatedAt": "2026-09-01T11:40:32.487Z",
+      "sections": [
+        {
+          "id": "c_s1",
+          "type": "richText",
+          "title": "Contact Us",
+          "description": "We would love to hear from you.",
+          "content": "<p>Email us at hello@braingamepuzzle.com</p>",
+          "image": "",
+          "buttons": [],
+          "visible": true,
+          "sortOrder": 1,
+          "settings": {}
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "logo": "1D Brain Games",
+    "companyName": "1D Brain Games",
+    "header": {
+      "enabled": true,
+      "logoText": "1D Brain Games",
+      "navigation": [
+        {
+          "id": "1",
+          "label": "Home",
+          "url": "/",
+          "visible": true,
+          "order": 1
+        },
+        {
+          "id": "2",
+          "label": "Games",
+          "url": "/games",
+          "visible": true,
+          "order": 2
+        },
+        {
+          "id": "3",
+          "label": "About",
+          "url": "/about",
+          "visible": true,
+          "order": 3
+        },
+        {
+          "id": "4",
+          "label": "Contact",
+          "url": "/contact",
+          "visible": true,
+          "order": 4
+        }
+      ],
+      "cta": {
+        "enabled": true,
+        "text": "Explore Games",
+        "url": "/games"
+      },
+      "sticky": true
+    },
+    "footer": {
+      "enabled": true,
+      "description": "We develop mobile brain games, puzzle games, focus games, and casual games.",
+      "socialLinks": [
+        {
+          "platform": "Instagram",
+          "url": "#",
+          "visible": true
+        },
+        {
+          "platform": "YouTube",
+          "url": "#",
+          "visible": true
+        },
+        {
+          "platform": "Facebook",
+          "url": "#",
+          "visible": true
+        },
+        {
+          "platform": "X",
+          "url": "#",
+          "visible": true
+        }
+      ],
+      "copyrightText": "\u00a9 2026 1D Brain Games. All rights reserved."
+    },
+    "globalStoreLinks": {
+      "stripEnabled": true,
+      "stripText": "Play 1D Brain Games on your phone",
+      "googlePlayUrl": "#",
+      "appStoreUrl": "#"
+    },
+    "whatsapp": {
+      "enabled": true,
+      "number": "1234567890",
+      "defaultMessage": "Hi, I want to know more."
+    },
+    "globalCta": {
+      "enabled": true,
+      "heading": "Ready to Challenge Your Mind?",
+      "description": "Discover 1D Brain Games games and start playing.",
+      "buttonText": "Play Our Games",
+      "buttonUrl": "/games"
+    }
+  },
+  "privacyPolicy": {
+    "enabled": true,
+    "title": "Website Privacy Policy",
+    "content": "<p>Your privacy is important to us...</p>",
+    "lastUpdated": "2026-09-01T11:40:32.487Z"
+  }
+}
