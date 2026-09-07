@@ -578,7 +578,11 @@
       "screenshots": [
         "/screenshots/saw-dash/screenshot_1.png",
         "/screenshots/saw-dash/screenshot_2.png",
-        "/screenshots/saw-dash/screenshot_3.png"
+        "/screenshots/saw-dash/screenshot_3.png",
+        "/screenshots/saw-dash/screenshot_4.png",
+        "/screenshots/saw-dash/screenshot_5.png",
+        "/screenshots/saw-dash/screenshot_6.png",
+        "/screenshots/saw-dash/screenshot_7.png"
       ],
       "features": [
         {
@@ -652,13 +656,13 @@
         "High Score Chasers"
       ],
       "whyPlay": {
-        "heading": "Survive the Storm.",
-        "subheading": "One hit and it is over. Precision is everything.",
+        "heading": "CUSTOMIZE YOUR GAME",
+        "subheading": "Build your own style with different characters, weapons, backgrounds and animations. Unlock new content and make your SawDash experience your own.",
         "points": [
-          "Fast-Paced Action",
+          "Fast-Paced Survival Action",
           "Satisfying Weapon Upgrades",
           "Retro Pixel Visuals",
-          "Endless Challenge"
+          "Over 3,000 Action Stages"
         ]
       },
       "sectionOrder": [
@@ -682,13 +686,13 @@
         },
         {
           "id": "s4",
-          "type": "gallery",
+          "type": "screenshots",
           "visible": true,
           "order": 4
         },
         {
           "id": "s5",
-          "type": "howToPlay",
+          "type": "howItWorks",
           "visible": true,
           "order": 5
         },
@@ -712,9 +716,15 @@
         },
         {
           "id": "s9",
-          "type": "cta",
+          "type": "storeCta",
           "visible": true,
           "order": 9
+        },
+        {
+          "id": "s10",
+          "type": "moreGames",
+          "visible": true,
+          "order": 10
         }
       ],
       "status": "Published",
@@ -722,15 +732,15 @@
       "sortOrder": 4,
       "privacyPolicy": {
         "enabled": true,
-        "title": "Saw Dash Privacy Policy",
-        "content": "Privacy Policy for Saw Dash\n\nLast updated: September 2026\n\n1. Overview\nSaw Dash ('we', 'our', or 'us') is dedicated to protecting player privacy. This policy outlines how data is handled when you play Saw Dash.\n\n2. Data Collection\nSaw Dash does not require user account registration. Game progress, high scores, unlocked weapons, and settings are saved locally on your device.\n\n3. Analytics and Advertising\nIf enabled, anonymous gameplay telemetry and crash reporting may be utilized to diagnose stability issues and improve gameplay balance.\n\n4. Contact\nIf you have any questions regarding this Privacy Policy, please contact our support team at support@1dbraingames.com.",
+        "title": "SawDash — Privacy Policy",
+        "content": "Privacy Policy for SawDash\n\nLast updated: September 2026\n\n1. Introduction\nThis Privacy Policy explains how SawDash ('the app', 'we', 'us') handles information. SawDash is developed and operated by an independent developer, contactable at viictoriaahiils@gmail.com. This policy applies to the SawDash Android and iOS app and covers what limited information the app stores, and what information our advertising provider (such as Google AdMob) may process when ads are shown.\n\n2. Information We Collect\nCollected by SawDash itself: None of your personal information is collected or transmitted by SawDash. The app stores your gameplay progress locally on your device only — highest stage reached, completed levels, coins, best scores/combos, unlocked characters/guns/backgrounds/animations, equipped items, settings (music/sound/vibration), and mission/achievement/daily-reward status. This data is saved to your device's local storage, never to a remote server, and the app has no mandatory account or sign-in system.\n\n3. Advertising & Analytics\nSawDash may use Google AdMob to display banner and rewarded video ads. The Google Mobile Ads SDK included in the app may collect information such as your device's advertising identifier, general device and operating-system information, IP address, coarse (non-precise) location derived from IP, and ad interaction/performance data.\n\n4. Rewarded Advertisements\nAfter losing lives in a level, you may voluntarily choose to watch a rewarded advertisement in exchange for an in-game reward — restoring lives and resuming that level. This is entirely optional and is never triggered automatically.\n\n5. Data Security & User Choices\nYour game progress is stored only on your own device. You can reset all locally-stored progress at any time from Settings -> Reset Progress, or clear the app's data through your device's app settings.\n\n6. Contact\nQuestions about this policy or SawDash's data practices can be sent to: viictoriaahiils@gmail.com.",
         "lastUpdated": "2026-09-07",
         "slug": "saw-dash-privacy"
       },
       "termsAndConditions": {
         "enabled": true,
-        "title": "Saw Dash Terms & Conditions",
-        "content": "Terms and Conditions for Saw Dash\n\n1. Acceptance of Terms\nBy downloading, installing, or playing Saw Dash, you agree to comply with these terms.\n\n2. License\nWe grant you a personal, non-exclusive, non-transferable, revocable license to play Saw Dash for personal, non-commercial entertainment.\n\n3. In-Game Assets & Coins\nIn-game coins, guns, and upgrades earned through gameplay are virtual items with no real-world monetary value.\n\n4. Changes\nWe reserve the right to modify or update the game and these terms at any time.",
+        "title": "SawDash Terms & Conditions",
+        "content": "Terms and Conditions for SawDash\n\n1. Acceptance of Terms\nBy downloading, installing, or playing SawDash, you agree to comply with these terms.\n\n2. License\nWe grant you a personal, non-exclusive, non-transferable, revocable license to play SawDash for personal, non-commercial entertainment.\n\n3. In-Game Assets & Coins\nIn-game coins, guns, lives, and upgrades earned through gameplay are virtual items with no real-world monetary value.\n\n4. Changes\nWe reserve the right to modify or update the game and these terms at any time.\n\n5. Contact\nFor any support or questions, please contact viictoriaahiils@gmail.com.",
         "lastUpdated": "2026-09-07",
         "slug": "saw-dash-terms"
       },
@@ -745,7 +755,7 @@
         "noIndex": false
       },
       "createdAt": "2026-09-07T21:00:00.000Z",
-      "updatedAt": "2026-09-07T21:00:00.000Z"
+      "updatedAt": "2026-09-07T20:01:15.325Z"
     }
   ],
   "pages": [

@@ -15,7 +15,7 @@ interface AppState {
 
 import { collection, getDocs, doc, getDoc, setDoc, deleteDoc } from 'firebase/firestore';
 import { signInWithEmailAndPassword, signOut } from 'firebase/auth';
-import { db, auth } from '../lib/firebase';
+import { db as firestoreDb, auth } from '../lib/firebase';
 
 export const useStore = create<AppState>((set) => ({
   data: null,
@@ -24,16 +24,16 @@ export const useStore = create<AppState>((set) => ({
   fetchPublicData: async () => {
     set({ loading: true });
     try {
-      const gamesSnap = await getDocs(collection(db, 'games'));
+      const gamesSnap = await getDocs(collection(firestoreDb, 'games'));
       const games = gamesSnap.docs.map(d => d.data() as Game);
 
-      const pagesSnap = await getDocs(collection(db, 'pages'));
+      const pagesSnap = await getDocs(collection(firestoreDb, 'pages'));
       const pages = pagesSnap.docs.map(d => d.data() as any);
 
-      const settingsSnap = await getDoc(doc(db, 'settings', 'global'));
+      const settingsSnap = await getDoc(doc(firestoreDb, 'settings', 'global'));
       const settings = (settingsSnap.exists() ? settingsSnap.data() : null) as SiteSettings;
 
-      const privacySnap = await getDoc(doc(db, 'privacyPolicy', 'global'));
+      const privacySnap = await getDoc(doc(firestoreDb, 'privacyPolicy', 'global'));
       const privacyPolicy = privacySnap.exists() ? privacySnap.data() : { enabled: false, title: '', content: '', lastUpdated: '' };
 
       if (games.length > 0) {
@@ -101,16 +101,16 @@ export const useAdminStore = create<AdminState>((set, get) => ({
     set({ loading: true });
     let loadedData: DatabaseSchema | null = null;
     try {
-      const gamesSnap = await getDocs(collection(db, 'games'));
+      const gamesSnap = await getDocs(collection(firestoreDb, 'games'));
       const games = gamesSnap.docs.map(d => d.data() as Game);
 
-      const pagesSnap = await getDocs(collection(db, 'pages'));
+      const pagesSnap = await getDocs(collection(firestoreDb, 'pages'));
       const pages = pagesSnap.docs.map(d => d.data() as any);
 
-      const settingsSnap = await getDoc(doc(db, 'settings', 'global'));
+      const settingsSnap = await getDoc(doc(firestoreDb, 'settings', 'global'));
       const settings = (settingsSnap.exists() ? settingsSnap.data() : null) as SiteSettings;
 
-      const privacySnap = await getDoc(doc(db, 'privacyPolicy', 'global'));
+      const privacySnap = await getDoc(doc(firestoreDb, 'privacyPolicy', 'global'));
       const privacyPolicy = privacySnap.exists() ? privacySnap.data() : { enabled: false, title: '', content: '', lastUpdated: '' };
 
       if (games.length > 0) {
@@ -156,16 +156,16 @@ export const useAdminStore = create<AdminState>((set, get) => ({
     try {
       // 1. Persist to Firestore
       for (const game of newData.games) {
-        await setDoc(doc(db, 'games', game.id), game);
+        await setDoc(doc(firestoreDb, 'games', game.id), game);
       }
       for (const page of newData.pages) {
-        await setDoc(doc(db, 'pages', page.id), page);
+        await setDoc(doc(firestoreDb, 'pages', page.id), page);
       }
       if (newData.settings) {
-        await setDoc(doc(db, 'settings', 'global'), newData.settings);
+        await setDoc(doc(firestoreDb, 'settings', 'global'), newData.settings);
       }
       if (newData.privacyPolicy) {
-        await setDoc(doc(db, 'privacyPolicy', 'global'), newData.privacyPolicy);
+        await setDoc(doc(firestoreDb, 'privacyPolicy', 'global'), newData.privacyPolicy);
       }
 
       // 2. Mirror to local server db.json for backup and static persistence
@@ -205,60 +205,60 @@ export const useAdminStore = create<AdminState>((set, get) => ({
     }
   },
   updateGame: async (game: Game): Promise<boolean> => {
-    const { db, saveAdminData } = get();
-    if (!db) return false;
+    const { db: currentDb, saveAdminData } = get();
+    if (!currentDb) return false;
     const newData = {
-      ...db,
-      games: db.games.map(g => g.id === game.id ? game : g)
+      ...currentDb,
+      games: currentDb.games.map(g => g.id === game.id ? game : g)
     };
     return await saveAdminData(newData);
   },
   addGame: async (game: Game): Promise<boolean> => {
-    const { db, saveAdminData } = get();
-    if (!db) return false;
-    const existing = db.games.findIndex(g => g.id === game.id);
-    let newGames = [...db.games];
+    const { db: currentDb, saveAdminData } = get();
+    if (!currentDb) return false;
+    const existing = currentDb.games.findIndex(g => g.id === game.id);
+    let newGames = [...currentDb.games];
     if (existing >= 0) {
       newGames[existing] = game;
     } else {
       newGames.push(game);
     }
     const newData = {
-      ...db,
+      ...currentDb,
       games: newGames
     };
     return await saveAdminData(newData);
   },
   deleteGame: async (gameId: string): Promise<boolean> => {
-    const { db, saveAdminData } = get();
-    if (!db) return false;
+    const { db: currentDb, saveAdminData } = get();
+    if (!currentDb) return false;
 
     // Remove from Firestore directly
     try {
-      await deleteDoc(doc(db, 'games', gameId));
+      await deleteDoc(doc(firestoreDb, 'games', gameId));
     } catch (err) {
       console.warn('deleteDoc warning from Firestore:', err);
     }
 
     const newData = {
-      ...db,
-      games: db.games.filter(g => g.id !== gameId)
+      ...currentDb,
+      games: currentDb.games.filter(g => g.id !== gameId)
     };
     return await saveAdminData(newData);
   },
   deletePage: async (pageId: string): Promise<boolean> => {
-    const { db, saveAdminData } = get();
-    if (!db) return false;
+    const { db: currentDb, saveAdminData } = get();
+    if (!currentDb) return false;
 
     try {
-      await deleteDoc(doc(db, 'pages', pageId));
+      await deleteDoc(doc(firestoreDb, 'pages', pageId));
     } catch (err) {
       console.warn('deleteDoc page warning from Firestore:', err);
     }
 
     const newData = {
-      ...db,
-      pages: db.pages.filter(p => p.id !== pageId)
+      ...currentDb,
+      pages: currentDb.pages.filter(p => p.id !== pageId)
     };
     return await saveAdminData(newData);
   }

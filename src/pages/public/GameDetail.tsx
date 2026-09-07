@@ -1,16 +1,29 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useStore } from '../../store/useStore';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Game } from '../../types';
 import { DynamicHero } from '../../components/game/DynamicHero';
 import { WhatsAppButton } from '../../components/ui/WhatsAppButton';
+import { ChevronLeft, ChevronRight, X, ZoomIn } from 'lucide-react';
 
 export function GameDetail() {
   const { slug } = useParams<{ slug: string }>();
   const [game, setGame] = useState<Game | null>(null);
   const [loading, setLoading] = useState(true);
+  const [activeScreenshot, setActiveScreenshot] = useState<string | null>(null);
+  const galleryScrollRef = useRef<HTMLDivElement>(null);
   const { data } = useStore();
+
+  const scrollGallery = (direction: 'left' | 'right') => {
+    if (galleryScrollRef.current) {
+      const scrollDistance = 340;
+      galleryScrollRef.current.scrollBy({
+        left: direction === 'left' ? -scrollDistance : scrollDistance,
+        behavior: 'smooth'
+      });
+    }
+  };
 
   useEffect(() => {
     if (data && data.games) {
@@ -99,12 +112,13 @@ export function GameDetail() {
           </section>
         );
       case 'howItWorks':
+      case 'howToPlay':
         return (
           <section key={section.id} className="py-24 bg-[#05020A] border-y border-white/5">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="flex gap-8 overflow-x-auto pb-12 snap-x snap-mandatory hide-scrollbar">
                 {game.howToPlay?.map((step, i) => (
-                  <div key={step.id} className="min-w-[300px] max-w-[400px] flex-1 bg-[#1E1E2E] rounded-[2rem] p-10 border border-white/10 snap-center">
+                  <div key={step.id || i} className="min-w-[300px] max-w-[400px] flex-1 bg-[#1E1E2E] rounded-[2rem] p-10 border border-white/10 snap-center">
                     <span className="text-5xl font-black block mb-6" style={{ color: game.accentColor || '#FFF' }}>0{i+1}</span>
                     <h3 className="text-3xl font-bold mb-4">{step.title}</h3>
                     <p className="text-xl text-white/50">{step.description}</p>
@@ -132,52 +146,71 @@ export function GameDetail() {
           </section>
         );
       case 'screenshots':
+      case 'gallery':
         if (!game.screenshots?.length) return null;
         return (
           <section key={section.id} className="py-24 md:py-32 bg-[#1E1E2E] border-y border-white/5 overflow-hidden">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 flex items-end justify-between">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 flex items-end justify-between flex-wrap gap-4">
               <div>
                 <span className="text-xs uppercase font-bold tracking-widest text-white/50 mb-2 block">Gameplay Showcase</span>
                 <h2 className="text-4xl md:text-5xl font-black text-white">Inside the Game</h2>
               </div>
-              {game.screenshots.length > 2 && (
-                <div className="hidden sm:flex items-center gap-2 text-white/40 text-sm font-medium">
-                  <span>Swipe or scroll to explore</span>
-                  <span>&rarr;</span>
+              {game.screenshots.length > 1 && (
+                <div className="flex items-center gap-3">
+                  <span className="hidden sm:inline-block text-xs uppercase tracking-wider font-semibold text-white/40">
+                    {game.screenshots.length} Screenshots
+                  </span>
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={() => scrollGallery('left')}
+                      className="p-3 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors border border-white/10"
+                      aria-label="Previous screenshot"
+                    >
+                      <ChevronLeft className="w-5 h-5" />
+                    </button>
+                    <button
+                      onClick={() => scrollGallery('right')}
+                      className="p-3 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors border border-white/10"
+                      aria-label="Next screenshot"
+                    >
+                      <ChevronRight className="w-5 h-5" />
+                    </button>
+                  </div>
                 </div>
               )}
             </div>
-            {game.screenshots.length <= 2 ? (
-              <div className="relative h-[550px] flex items-center justify-center w-full max-w-7xl mx-auto">
+
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div
+                ref={galleryScrollRef}
+                className="flex gap-6 overflow-x-auto pb-8 pt-2 scroll-smooth snap-x snap-mandatory"
+                style={{ scrollbarWidth: 'thin' }}
+              >
                 {game.screenshots.map((src, i) => (
-                  <img
+                  <div
                     key={i}
-                    src={src}
-                    alt="Gameplay"
-                    className={`absolute w-64 md:w-80 rounded-[3rem] shadow-2xl border-4 border-white/10 transition-transform hover:z-30 hover:scale-105 ${
-                      i === 0 ? 'left-[15%] md:left-[25%] rotate-[-6deg] z-10' : 'right-[15%] md:right-[25%] rotate-[6deg] z-20'
-                    }`}
-                  />
-                ))}
-                {game.screenshots.length === 1 && (
-                  <img src={game.screenshots[0]} alt="Gameplay" className="w-80 rounded-[3rem] shadow-2xl border-4 border-white/10" />
-                )}
-              </div>
-            ) : (
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex gap-6 overflow-x-auto pb-8 pt-2 scroll-smooth snap-x">
-                  {game.screenshots.map((src, i) => (
-                    <div key={i} className="flex-shrink-0 snap-center">
+                    onClick={() => setActiveScreenshot(src)}
+                    className="flex-shrink-0 snap-center cursor-pointer group relative"
+                  >
+                    <div className="relative overflow-hidden rounded-[2.5rem] border-4 border-white/10 shadow-2xl transition-all duration-300 group-hover:scale-105 group-hover:border-white/30">
                       <img
                         src={src}
                         alt={`${game.name} screenshot ${i + 1}`}
-                        className="w-64 md:w-72 h-auto rounded-[2.5rem] shadow-2xl border-4 border-white/10 transition-all duration-300 hover:scale-105 hover:border-white/30"
+                        className="w-64 md:w-72 h-auto block object-cover"
+                        loading="lazy"
                       />
+                      <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2 text-white font-bold text-sm">
+                        <ZoomIn className="w-5 h-5" />
+                        <span>View</span>
+                      </div>
                     </div>
-                  ))}
-                </div>
+                    <span className="block text-center mt-3 text-xs font-semibold text-white/40">
+                      {i + 1} / {game.screenshots.length}
+                    </span>
+                  </div>
+                ))}
               </div>
-            )}
+            </div>
           </section>
         );
       case 'audience':
@@ -212,6 +245,7 @@ export function GameDetail() {
           </section>
         );
       case 'storeCta':
+      case 'cta':
         return (
           <section key={section.id} className="py-32 bg-[#0A051A] text-center">
             <div className="max-w-4xl mx-auto px-4">
@@ -356,6 +390,36 @@ export function GameDetail() {
           </div>
         </section>
       )}
+
+      {/* Screenshot Lightbox Modal */}
+      <AnimatePresence>
+        {activeScreenshot && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setActiveScreenshot(null)}
+            className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-8"
+          >
+            <button
+              onClick={() => setActiveScreenshot(null)}
+              className="absolute top-6 right-6 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
+              aria-label="Close image preview"
+            >
+              <X className="w-6 h-6" />
+            </button>
+            <motion.img
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              src={activeScreenshot}
+              alt="Screenshot Preview"
+              className="max-w-full max-h-[88vh] rounded-3xl object-contain shadow-2xl border border-white/20"
+              onClick={(e) => e.stopPropagation()}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
