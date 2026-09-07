@@ -13,8 +13,8 @@ interface AppState {
   fetchPublicData: () => Promise<void>;
 }
 
-import { collection, getDocs, doc, getDoc, setDoc } from 'firebase/firestore';
-import { signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'firebase/auth';
+import { collection, getDocs, doc, getDoc, setDoc, deleteDoc } from 'firebase/firestore';
+import { signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { db, auth } from '../lib/firebase';
 
 export const useStore = create<AppState>((set) => ({
@@ -36,11 +36,27 @@ export const useStore = create<AppState>((set) => ({
       const privacySnap = await getDoc(doc(db, 'privacyPolicy', 'global'));
       const privacyPolicy = privacySnap.exists() ? privacySnap.data() : { enabled: false, title: '', content: '', lastUpdated: '' };
 
-      const data = { games, pages, settings, privacyPolicy };
-      set({ data, loading: false, error: null });
+      if (games.length > 0) {
+        const data = { games, pages, settings, privacyPolicy };
+        set({ data, loading: false, error: null });
+        return;
+      }
     } catch (err: any) {
-      set({ error: err.message, loading: false });
+      console.warn('Firestore fetchPublicData failed, attempting local API fallback:', err?.message || err);
     }
+
+    // Fallback to local server API / db.json
+    try {
+      const res = await fetch('/api/public/data');
+      if (res.ok) {
+        const localData = await res.json();
+        set({ data: localData, loading: false, error: null });
+        return;
+      }
+    } catch (apiErr: any) {
+      console.error('API fallback fetch failed:', apiErr);
+    }
+    set({ loading: false });
   }
 }));
 
@@ -51,10 +67,11 @@ interface AdminState {
   login: (password: string, email?: string) => Promise<boolean>;
   logout: () => void;
   fetchAdminData: () => Promise<void>;
-  saveAdminData: (newData: DatabaseSchema) => Promise<void>;
-  updateGame: (game: Game) => void;
-  deleteGame: (gameId: string) => void;
-  addGame: (game: Game) => void;
+  saveAdminData: (newData: DatabaseSchema) => Promise<boolean>;
+  updateGame: (game: Game) => Promise<boolean>;
+  deleteGame: (gameId: string) => Promise<boolean>;
+  addGame: (game: Game) => Promise<boolean>;
+  deletePage: (pageId: string) => Promise<boolean>;
 }
 
 export const useAdminStore = create<AdminState>((set, get) => ({
@@ -63,7 +80,6 @@ export const useAdminStore = create<AdminState>((set, get) => ({
   token: localStorage.getItem('admin_token'),
   login: async (password: string, email: string = 'abhay@gmail.com') => {
     try {
-      // Firebase auth login
       const cred = await signInWithEmailAndPassword(auth, email || 'abhay@gmail.com', password);
       const token = await cred.user.getIdToken();
       localStorage.setItem('admin_token', token);
@@ -83,6 +99,7 @@ export const useAdminStore = create<AdminState>((set, get) => ({
     const { token } = get();
     if (!token) return;
     set({ loading: true });
+    let loadedData: DatabaseSchema | null = null;
     try {
       const gamesSnap = await getDocs(collection(db, 'games'));
       const games = gamesSnap.docs.map(d => d.data() as Game);
@@ -96,56 +113,154 @@ export const useAdminStore = create<AdminState>((set, get) => ({
       const privacySnap = await getDoc(doc(db, 'privacyPolicy', 'global'));
       const privacyPolicy = privacySnap.exists() ? privacySnap.data() : { enabled: false, title: '', content: '', lastUpdated: '' };
 
-      set({ db: { games, pages, settings: settings as any, privacyPolicy: privacyPolicy as any }, loading: false });
+      if (games.length > 0) {
+        loadedData = { games, pages, settings: settings as any, privacyPolicy: privacyPolicy as any };
+      }
     } catch (err) {
-      console.error(err);
+      console.warn('Firestore fetchAdminData error, checking local fallback:', err);
+    }
+
+    if (!loadedData) {
+      try {
+        const res = await fetch('/api/admin/db', {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        if (res.ok) {
+          loadedData = await res.json();
+        }
+      } catch (apiErr) {
+        console.error('Fallback /api/admin/db error:', apiErr);
+      }
+    }
+
+    if (loadedData) {
+      set({ db: loadedData, loading: false });
+      // Keep public store synchronized
+      useStore.setState({
+        data: {
+          games: loadedData.games,
+          pages: loadedData.pages,
+          settings: loadedData.settings,
+          privacyPolicy: loadedData.privacyPolicy
+        },
+        loading: false,
+        error: null
+      });
+    } else {
       set({ loading: false });
     }
   },
-  saveAdminData: async (newData: DatabaseSchema) => {
+  saveAdminData: async (newData: DatabaseSchema): Promise<boolean> => {
     const { token } = get();
-    if (!token) return;
+    if (!token) return false;
     try {
+      // 1. Persist to Firestore
       for (const game of newData.games) {
         await setDoc(doc(db, 'games', game.id), game);
       }
       for (const page of newData.pages) {
         await setDoc(doc(db, 'pages', page.id), page);
       }
-      await setDoc(doc(db, 'settings', 'global'), newData.settings);
-      await setDoc(doc(db, 'privacyPolicy', 'global'), newData.privacyPolicy);
+      if (newData.settings) {
+        await setDoc(doc(db, 'settings', 'global'), newData.settings);
+      }
+      if (newData.privacyPolicy) {
+        await setDoc(doc(db, 'privacyPolicy', 'global'), newData.privacyPolicy);
+      }
+
+      // 2. Mirror to local server db.json for backup and static persistence
+      try {
+        await fetch('/api/admin/db', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`
+          },
+          body: JSON.stringify(newData)
+        });
+      } catch (mirrorErr) {
+        console.warn('Mirror to /api/admin/db notice:', mirrorErr);
+      }
       
+      // 3. Update Admin state
       set({ db: newData });
-    } catch (err) {
+
+      // 4. Instantly update Public state so public site reflects edits immediately
+      useStore.setState({
+        data: {
+          games: newData.games,
+          pages: newData.pages,
+          settings: newData.settings,
+          privacyPolicy: newData.privacyPolicy
+        },
+        loading: false,
+        error: null
+      });
+
+      return true;
+    } catch (err: any) {
       console.error('Save error:', err);
-      alert('Failed to save to Firebase. Ensure you have Write permissions.');
+      alert('Failed to save changes: ' + (err?.message || 'Permission denied'));
+      return false;
     }
   },
-  updateGame: (game: Game) => {
+  updateGame: async (game: Game): Promise<boolean> => {
     const { db, saveAdminData } = get();
-    if (!db) return;
+    if (!db) return false;
     const newData = {
       ...db,
       games: db.games.map(g => g.id === game.id ? game : g)
     };
-    saveAdminData(newData);
+    return await saveAdminData(newData);
   },
-  addGame: (game: Game) => {
+  addGame: async (game: Game): Promise<boolean> => {
     const { db, saveAdminData } = get();
-    if (!db) return;
+    if (!db) return false;
+    const existing = db.games.findIndex(g => g.id === game.id);
+    let newGames = [...db.games];
+    if (existing >= 0) {
+      newGames[existing] = game;
+    } else {
+      newGames.push(game);
+    }
     const newData = {
       ...db,
-      games: [...db.games, game]
+      games: newGames
     };
-    saveAdminData(newData);
+    return await saveAdminData(newData);
   },
-  deleteGame: (gameId: string) => {
+  deleteGame: async (gameId: string): Promise<boolean> => {
     const { db, saveAdminData } = get();
-    if (!db) return;
+    if (!db) return false;
+
+    // Remove from Firestore directly
+    try {
+      await deleteDoc(doc(db, 'games', gameId));
+    } catch (err) {
+      console.warn('deleteDoc warning from Firestore:', err);
+    }
+
     const newData = {
       ...db,
       games: db.games.filter(g => g.id !== gameId)
     };
-    saveAdminData(newData);
+    return await saveAdminData(newData);
+  },
+  deletePage: async (pageId: string): Promise<boolean> => {
+    const { db, saveAdminData } = get();
+    if (!db) return false;
+
+    try {
+      await deleteDoc(doc(db, 'pages', pageId));
+    } catch (err) {
+      console.warn('deleteDoc page warning from Firestore:', err);
+    }
+
+    const newData = {
+      ...db,
+      pages: db.pages.filter(p => p.id !== pageId)
+    };
+    return await saveAdminData(newData);
   }
 }));
+

@@ -94,6 +94,14 @@ export interface SiteSettings {
     buttonText: string;
     buttonUrl: string;
   };
+  seo?: {
+    metaTitle: string;
+    metaDescription: string;
+    keywords: string;
+    ogImage: string;
+    indexing: boolean;
+    analyticsId?: string;
+  };
 }
 
 export interface DatabaseSchema {

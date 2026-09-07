@@ -53,15 +53,27 @@ export function GameEditor() {
     }
   }, [id, db]);
 
-  const handleSave = () => {
+  const [isSaving, setIsSaving] = useState(false);
+
+  const handleSave = async () => {
     if (!formData) return;
-    const isNew = !id;
-    if (isNew) {
-      addGame(formData);
-    } else {
-      updateGame({ ...formData, updatedAt: new Date().toISOString() });
+    setIsSaving(true);
+    try {
+      const isNew = !id;
+      let success = false;
+      if (isNew) {
+        success = await addGame(formData);
+      } else {
+        success = await updateGame({ ...formData, updatedAt: new Date().toISOString() });
+      }
+      if (success) {
+        navigate('/admin/games');
+      }
+    } catch (err: any) {
+      alert('Save failed: ' + (err?.message || 'Unknown error'));
+    } finally {
+      setIsSaving(false);
     }
-    navigate('/admin/games');
   };
 
   const [isUploading, setIsUploading] = useState<string | null>(null);
@@ -96,9 +108,13 @@ export function GameEditor() {
           </button>
           <h1 className="text-3xl font-black text-gray-900">{id ? 'Edit Game' : 'Add Game'}</h1>
         </div>
-        <button onClick={handleSave} className="flex items-center gap-2 bg-indigo-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-indigo-700 transition-colors shadow-lg">
-          <Save className="w-5 h-5" />
-          Save Game
+        <button 
+          onClick={handleSave} 
+          disabled={isSaving}
+          className="flex items-center gap-2 bg-indigo-600 disabled:opacity-50 text-white px-8 py-3 rounded-xl font-bold hover:bg-indigo-700 transition-colors shadow-lg"
+        >
+          {isSaving ? <Loader2 className="w-5 h-5 animate-spin" /> : <Save className="w-5 h-5" />}
+          {isSaving ? 'Saving...' : 'Save Game'}
         </button>
       </div>
 

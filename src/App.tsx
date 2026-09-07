@@ -58,6 +58,7 @@ export default function App() {
           <Route path="games/:id" element={<GameEditor />} />
           <Route path="settings" element={<SettingsEditor />} />
           <Route path="pages" element={<PagesList />} />
+          <Route path="pages/new" element={<PageEditor />} />
           <Route path="pages/:id" element={<PageEditor />} />
           <Route path="media" element={<MediaList />} />
           <Route path="seo" element={<SeoSettings />} />

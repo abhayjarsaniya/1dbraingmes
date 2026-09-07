@@ -7,32 +7,32 @@ export function GamesList() {
   const { db, updateGame, deleteGame, addGame, saveAdminData } = useAdminStore();
   if (!db) return null;
 
-  const toggleStatus = (game: any) => {
+  const toggleStatus = async (game: any) => {
     const newStatus = game.status === 'Published' ? 'Hidden' : 'Published';
-    updateGame({ ...game, status: newStatus });
+    await updateGame({ ...game, status: newStatus });
   };
 
-  const duplicateGame = (game: any) => {
+  const duplicateGame = async (game: any) => {
     const newGame = {
       ...game,
       id: `g_${Date.now()}`,
       name: `${game.name} (Copy)`,
-      slug: `${game.slug}-copy`,
+      slug: `${game.slug}-copy-${Date.now().toString().slice(-4)}`,
       status: 'Draft',
-      sortOrder: db.games.length
+      sortOrder: db.games.length + 1
     };
-    addGame(newGame);
+    await addGame(newGame);
   };
 
-  const archiveGame = (game: any) => {
-    updateGame({ ...game, status: 'Archived' });
+  const archiveGame = async (game: any) => {
+    await updateGame({ ...game, status: 'Archived' });
   };
 
   const onDragStart = (e: React.DragEvent, index: number) => {
     e.dataTransfer.setData('dragIndex', index.toString());
   };
 
-  const onDrop = (e: React.DragEvent, dropIndex: number) => {
+  const onDrop = async (e: React.DragEvent, dropIndex: number) => {
     const dragIndex = parseInt(e.dataTransfer.getData('dragIndex'));
     if (dragIndex === dropIndex || isNaN(dragIndex)) return;
     
@@ -41,8 +41,8 @@ export function GamesList() {
     sortedGames.splice(dropIndex, 0, draggedItem);
     
     // Update sortOrder for all
-    const newGames = sortedGames.map((g, i) => ({ ...g, sortOrder: i }));
-    saveAdminData({ ...db, games: newGames });
+    const newGames = sortedGames.map((g, i) => ({ ...g, sortOrder: i + 1 }));
+    await saveAdminData({ ...db, games: newGames });
   };
   
   const onDragOver = (e: React.DragEvent) => {
@@ -102,7 +102,7 @@ export function GamesList() {
                   <button onClick={() => { if(confirm('Archive this game?')) archiveGame(game) }} className="p-2 text-gray-400 hover:text-orange-600 transition-colors">
                     <Archive className="w-5 h-5" />
                   </button>
-                  <button onClick={() => { if(confirm('Delete this game?')) deleteGame(game.id) }} className="p-2 text-gray-400 hover:text-red-600 transition-colors">
+                  <button onClick={async () => { if(confirm('Are you sure you want to delete this game?')) await deleteGame(game.id) }} className="p-2 text-gray-400 hover:text-red-600 transition-colors" title="Delete">
                     <Trash2 className="w-5 h-5" />
                   </button>
                 </div>
@@ -172,7 +172,7 @@ export function GamesList() {
                       <button onClick={() => { if(confirm('Archive this game?')) archiveGame(game) }} className="p-2 text-gray-400 hover:text-orange-600 transition-colors" title="Archive">
                         <Archive className="w-5 h-5" />
                       </button>
-                      <button onClick={() => { if(confirm('Are you sure you want to delete this game?')) deleteGame(game.id) }} className="p-2 text-gray-400 hover:text-red-600 transition-colors" title="Delete">
+                      <button onClick={async () => { if(confirm('Are you sure you want to delete this game?')) await deleteGame(game.id) }} className="p-2 text-gray-400 hover:text-red-600 transition-colors" title="Delete">
                         <Trash2 className="w-5 h-5" />
                       </button>
                     </div>

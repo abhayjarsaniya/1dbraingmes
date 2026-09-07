@@ -94,3 +94,37 @@ apiRouter.post('/admin/upload', requireAuth, upload.single('image'), (req, res) 
   const url = '/uploads/' + req.file.filename;
   res.json({ url });
 });
+
+apiRouter.get('/admin/media', requireAuth, (req, res) => {
+  const mediaList: { url: string; name: string; size: number; modified: string; category: string }[] = [];
+  
+  const scanDir = (dir: string, baseWebPath: string, cat: string) => {
+    if (!fs.existsSync(dir)) return;
+    try {
+      const items = fs.readdirSync(dir, { withFileTypes: true });
+      for (const item of items) {
+        if (item.isDirectory()) {
+          scanDir(path.join(dir, item.name), `${baseWebPath}/${item.name}`, item.name);
+        } else if (/\.(png|jpe?g|webp|gif|svg)$/i.test(item.name)) {
+          const fullPath = path.join(dir, item.name);
+          const stat = fs.statSync(fullPath);
+          mediaList.push({
+            url: `${baseWebPath}/${item.name}`,
+            name: item.name,
+            size: stat.size,
+            modified: stat.mtime.toISOString(),
+            category: cat
+          });
+        }
+      }
+    } catch (err) {
+      console.error('scanDir error:', err);
+    }
+  };
+
+  scanDir(path.join(process.cwd(), 'public', 'screenshots'), '/screenshots', 'Screenshots');
+  scanDir(path.join(process.cwd(), 'public', 'uploads'), '/uploads', 'Uploads');
+
+  res.json(mediaList);
+});
+

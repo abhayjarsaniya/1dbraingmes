@@ -1,10 +1,10 @@
 import React from 'react';
 import { useAdminStore } from '../../store/useStore';
 import { Link } from 'react-router-dom';
-import { FileText, Edit } from 'lucide-react';
+import { FileText, Edit, Plus, Trash2 } from 'lucide-react';
 
 export function PagesList() {
-  const { db } = useAdminStore();
+  const { db, deletePage } = useAdminStore();
   if (!db) return <div className="p-8">Loading pages...</div>;
 
   return (
@@ -14,6 +14,13 @@ export function PagesList() {
           <h1 className="text-3xl font-black text-gray-900">Pages</h1>
           <p className="text-gray-500 mt-1">Manage global site pages and sections.</p>
         </div>
+        <Link 
+          to="/admin/pages/new" 
+          className="flex items-center gap-2 bg-indigo-600 text-white px-6 py-3 rounded-xl font-bold hover:bg-indigo-700 transition-colors shadow-lg shadow-indigo-600/20"
+        >
+          <Plus className="w-5 h-5" />
+          Add Page
+        </Link>
       </div>
 
       <div className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
@@ -38,6 +45,16 @@ export function PagesList() {
                 <Link to={`/admin/pages/${page.id}`} className="p-2 text-gray-400 hover:text-indigo-600 transition-colors">
                   <Edit className="w-5 h-5" />
                 </Link>
+                <button 
+                  onClick={async () => {
+                    if (confirm(`Are you sure you want to delete "${page.name}"?`)) {
+                      await deletePage(page.id);
+                    }
+                  }} 
+                  className="p-2 text-gray-400 hover:text-red-600 transition-colors"
+                >
+                  <Trash2 className="w-5 h-5" />
+                </button>
               </div>
             </div>
           ))}
@@ -70,12 +87,25 @@ export function PagesList() {
                     </span>
                   </td>
                   <td className="px-6 py-4 text-right">
-                    <Link 
-                      to={`/admin/pages/${page.id}`}
-                      className="text-indigo-600 font-bold hover:text-indigo-800"
-                    >
-                      Edit
-                    </Link>
+                    <div className="flex items-center justify-end gap-3">
+                      <Link 
+                        to={`/admin/pages/${page.id}`}
+                        className="text-indigo-600 font-bold hover:text-indigo-800 text-sm"
+                      >
+                        Edit
+                      </Link>
+                      <button 
+                        onClick={async () => {
+                          if (confirm(`Are you sure you want to delete "${page.name}"?`)) {
+                            await deletePage(page.id);
+                          }
+                        }}
+                        className="text-gray-400 hover:text-red-600 p-1"
+                        title="Delete Page"
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </button>
+                    </div>
                   </td>
                 </tr>
               ))}

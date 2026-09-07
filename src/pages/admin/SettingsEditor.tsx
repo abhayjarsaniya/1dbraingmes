@@ -12,15 +12,29 @@ export function SettingsEditor() {
     }
   }, [db]);
 
+  const [saving, setSaving] = useState(false);
+  const [savedSuccess, setSavedSuccess] = useState(false);
+
   if (!formData) return <div className="p-8">Loading settings...</div>;
 
-  const handleSave = () => {
-    if (!db) return;
-    saveAdminData({
-      ...db,
-      settings: formData
-    });
-    alert('Settings saved successfully!');
+  const handleSave = async () => {
+    if (!db || !formData) return;
+    setSaving(true);
+    setSavedSuccess(false);
+    try {
+      const success = await saveAdminData({
+        ...db,
+        settings: formData
+      });
+      if (success) {
+        setSavedSuccess(true);
+        setTimeout(() => setSavedSuccess(false), 3000);
+      }
+    } catch (err: any) {
+      alert('Error saving settings: ' + (err?.message || 'Error'));
+    } finally {
+      setSaving(false);
+    }
   };
 
   return (
@@ -30,12 +44,21 @@ export function SettingsEditor() {
           <h1 className="text-3xl font-black text-gray-900">Global Settings</h1>
           <p className="text-gray-500 mt-1">Manage header, footer, global CTAs, and company details.</p>
         </div>
-        <button
-          onClick={handleSave}
-          className="bg-indigo-600 text-white px-6 py-3 rounded-xl font-bold hover:bg-indigo-700 transition-colors shadow-lg shadow-indigo-200"
-        >
-          Save Changes
-        </button>
+        <div className="flex items-center gap-3">
+          {savedSuccess && (
+            <span className="text-sm font-bold text-green-600 bg-green-50 px-3 py-1.5 rounded-lg border border-green-200">
+              Settings Saved!
+            </span>
+          )}
+          <button
+            onClick={handleSave}
+            disabled={saving}
+            className="bg-indigo-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-indigo-700 disabled:opacity-50 transition-colors shadow-lg shadow-indigo-200 flex items-center gap-2"
+          >
+            {saving && <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />}
+            {saving ? 'Saving...' : 'Save Changes'}
+          </button>
+        </div>
       </div>
 
       <div className="space-y-8">

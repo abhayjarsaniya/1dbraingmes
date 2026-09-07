@@ -10,8 +10,22 @@ export function PageEditor() {
   
   const [formData, setFormData] = useState<Page | null>(null);
 
+  const [saving, setSaving] = useState(false);
+
   useEffect(() => {
-    if (db && db.pages) {
+    if (!db) return;
+    if (id === 'new') {
+      setFormData({
+        id: `p_${Date.now()}`,
+        name: 'New Page',
+        slug: 'new-page',
+        status: 'Published',
+        seo: { title: 'New Page', description: '' },
+        sections: [],
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString()
+      });
+    } else if (db.pages) {
       const page = db.pages.find(p => p.id === id);
       if (page) {
         setFormData(page);
@@ -21,14 +35,29 @@ export function PageEditor() {
 
   if (!formData) return <div className="p-8">Loading...</div>;
 
-  const handleSave = () => {
-    if (!db) return;
-    saveAdminData({
-      ...db,
-      pages: db.pages.map(p => p.id === formData.id ? formData : p)
-    });
-    alert('Page saved successfully!');
-    navigate('/admin/pages');
+  const handleSave = async () => {
+    if (!db || !formData) return;
+    setSaving(true);
+    try {
+      const isNew = id === 'new';
+      let newPages = [...(db.pages || [])];
+      if (isNew) {
+        newPages.push(formData);
+      } else {
+        newPages = newPages.map(p => p.id === formData.id ? { ...formData, updatedAt: new Date().toISOString() } : p);
+      }
+      const success = await saveAdminData({
+        ...db,
+        pages: newPages
+      });
+      if (success) {
+        navigate('/admin/pages');
+      }
+    } catch (err: any) {
+      alert('Error saving page: ' + (err?.message || 'Error'));
+    } finally {
+      setSaving(false);
+    }
   };
 
   const addSection = () => {
@@ -51,36 +80,71 @@ export function PageEditor() {
     <div className="p-8 max-w-5xl mx-auto pb-32">
       <div className="flex justify-between items-center mb-8">
         <div>
-          <h1 className="text-3xl font-black text-gray-900">Edit Page: {formData.name}</h1>
-          <p className="text-gray-500 mt-1">Manage SEO and content sections.</p>
+          <h1 className="text-3xl font-black text-gray-900">{id === 'new' ? 'Create New Page' : `Edit Page: ${formData.name}`}</h1>
+          <p className="text-gray-500 mt-1">Manage content sections, SEO tags, and page status.</p>
         </div>
         <button
           onClick={handleSave}
-          className="bg-indigo-600 text-white px-6 py-3 rounded-xl font-bold shadow-lg shadow-indigo-200 hover:bg-indigo-700 transition-colors"
+          disabled={saving}
+          className="bg-indigo-600 text-white px-8 py-3 rounded-xl font-bold shadow-lg shadow-indigo-200 hover:bg-indigo-700 disabled:opacity-50 transition-colors flex items-center gap-2"
         >
-          Save Page
+          {saving && <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />}
+          {saving ? 'Saving...' : 'Save Page'}
         </button>
       </div>
 
-      <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 mb-8">
-        <h2 className="text-xl font-bold mb-6">Page Settings</h2>
-        <div className="grid grid-cols-2 gap-6">
+      <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 mb-8 space-y-6">
+        <h2 className="text-xl font-bold">Page Information</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div>
+            <label className="text-sm font-bold text-gray-700">Page Name</label>
+            <input
+              type="text"
+              value={formData.name}
+              onChange={e => setFormData({ ...formData, name: e.target.value })}
+              className="w-full px-4 py-2 mt-1 rounded-xl border border-gray-300 outline-none focus:ring-2 focus:ring-indigo-600"
+            />
+          </div>
+          <div>
+            <label className="text-sm font-bold text-gray-700">Slug (URL path)</label>
+            <input
+              type="text"
+              value={formData.slug}
+              onChange={e => setFormData({ ...formData, slug: e.target.value })}
+              className="w-full px-4 py-2 mt-1 rounded-xl border border-gray-300 outline-none focus:ring-2 focus:ring-indigo-600"
+            />
+          </div>
+          <div>
+            <label className="text-sm font-bold text-gray-700">Status</label>
+            <select
+              value={formData.status}
+              onChange={e => setFormData({ ...formData, status: e.target.value as any })}
+              className="w-full px-4 py-2 mt-1 rounded-xl border border-gray-300 outline-none focus:ring-2 focus:ring-indigo-600"
+            >
+              <option value="Published">Published</option>
+              <option value="Hidden">Hidden</option>
+            </select>
+          </div>
+        </div>
+
+        <h2 className="text-xl font-bold pt-4 border-t border-gray-100">Page SEO</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
             <label className="text-sm font-bold text-gray-700">SEO Title</label>
             <input
               type="text"
-              value={formData.seo.title}
+              value={formData.seo?.title || ''}
               onChange={e => setFormData({ ...formData, seo: { ...formData.seo, title: e.target.value } })}
-              className="w-full px-4 py-2 mt-1 rounded-xl border border-gray-300 outline-none"
+              className="w-full px-4 py-2 mt-1 rounded-xl border border-gray-300 outline-none focus:ring-2 focus:ring-indigo-600"
             />
           </div>
           <div>
             <label className="text-sm font-bold text-gray-700">SEO Description</label>
             <input
               type="text"
-              value={formData.seo.description}
+              value={formData.seo?.description || ''}
               onChange={e => setFormData({ ...formData, seo: { ...formData.seo, description: e.target.value } })}
-              className="w-full px-4 py-2 mt-1 rounded-xl border border-gray-300 outline-none"
+              className="w-full px-4 py-2 mt-1 rounded-xl border border-gray-300 outline-none focus:ring-2 focus:ring-indigo-600"
             />
           </div>
         </div>
