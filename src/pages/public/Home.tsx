@@ -121,8 +121,8 @@ export function Home() {
             <h2 className="text-4xl md:text-5xl font-black text-white mb-6">Featured Experiences</h2>
             <p className="text-xl text-white/50">Curated puzzles for curious minds.</p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {featuredGames.slice(0, 3).map((game, index) => (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            {featuredGames.slice(0, 6).map((game, index) => (
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
