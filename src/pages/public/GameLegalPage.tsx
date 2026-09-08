@@ -76,7 +76,7 @@ export function GameLegalPage({ type }: { type: 'privacy' | 'terms' }) {
   
   if (!data) return null;
   
-  const game = data.games?.find(g => g.slug === slug);
+  const game = data.games?.find(g => g.slug === slug || (slug === 'bubble-pop-shooter' && g.slug === 'bug-pop-shooter') || (slug === 'bug-pop-shooter' && g.slug === 'bubble-pop-shooter'));
   
   if (!game) return <NotFound />;
   

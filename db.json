@@ -756,6 +756,207 @@
       },
       "createdAt": "2026-09-07T21:00:00.000Z",
       "updatedAt": "2026-09-07T20:01:15.325Z"
+    },
+    {
+      "id": "g5",
+      "name": "Bug Pop Shooter",
+      "slug": "bug-pop-shooter",
+      "tagline": "Aim, match and pop cute bugs in a fun and colorful puzzle shooter!",
+      "shortDescription": "Aim, match and pop cute bugs in a fun and colorful puzzle shooter!",
+      "longDescription": "bug launcher, shoot matching bugs and connect 3 or more of the same type to pop them.\n\n🐝 CUTE BUGS\nDiscover colorful ladybugs, bees, butterflies, caterpillars, beetles, dragonflies and many more as you progress.\n\n🧩 FUN PUZZLE CHALLENGES\nComplete different objectives, clear bug groups, drop targets and create satisfying combos.\n\n💥 POWERFUL BOOSTERS\nUse helpful power-ups to clear tricky areas, improve your shots and make bigger matches.\n\n🌸 COLORFUL GARDEN WORLD\nEnjoy a bright, playful garden atmosphere with friendly characters, fun animations and satisfying popping effects.\n\n🏆 KEEP PLAYING\nProgress through an ever-growing collection of puzzle levels, earn coins and discover new challenges.\n\n👆 SIMPLE CONTROLS\nJust aim with your finger and release to shoot. Easy for casual players and fun for everyone.",
+      "category": "Puzzle",
+      "gameType": "Bubble Match-3 Shooter",
+      "difficulty": "Medium",
+      "tags": [
+        "bubble shooter",
+        "puzzle",
+        "match 3",
+        "cute bugs",
+        "casual",
+        "family friendly"
+      ],
+      "icon": "/screenshots/bug-pop-shooter/icon.png",
+      "coverImage": "/screenshots/bug-pop-shooter/cover.png",
+      "screenshots": [
+        "/screenshots/bug-pop-shooter/screenshot_1.png",
+        "/screenshots/bug-pop-shooter/screenshot_2.png",
+        "/screenshots/bug-pop-shooter/screenshot_3.png",
+        "/screenshots/bug-pop-shooter/screenshot_4.png",
+        "/screenshots/bug-pop-shooter/screenshot_5.png"
+      ],
+      "features": [
+        {
+          "id": "f5_1",
+          "title": "Aim & Match 3",
+          "description": "Line up precision shots with the dotted trajectory guide to connect and pop matching bugs.",
+          "icon": "Target"
+        },
+        {
+          "id": "f5_2",
+          "title": "Power Up Your Shots",
+          "description": "Use the Bug Hammer, Rainbow Bug, Bomb Bug, and Aim Extender to clear tough clusters.",
+          "icon": "Zap"
+        },
+        {
+          "id": "f5_3",
+          "title": "Discover Cute Bugs & 200+ Levels",
+          "description": "Meet charming caterpillars, dragonflies, ladybugs, snails, and bees across hundreds of levels.",
+          "icon": "Trophy"
+        }
+      ],
+      "howToPlay": [
+        {
+          "id": "bp_1",
+          "title": "Aim Your Launcher",
+          "description": "Drag and hold to adjust the angle of your bug launcher with the precision trajectory line.",
+          "image": ""
+        },
+        {
+          "id": "bp_2",
+          "title": "Match 3 to Pop",
+          "description": "Release to fire! Match 3 or more bugs of the same color to pop them and clear the cluster.",
+          "image": ""
+        },
+        {
+          "id": "bp_3",
+          "title": "Complete Level Goals & Use Boosters",
+          "description": "Clear the top row, free trapped butterflies, or hit score milestones before your ammo runs out!",
+          "image": ""
+        }
+      ],
+      "audience": "Casual puzzle players, bubble shooter fans, and families looking for cheerful, relaxing fun.",
+      "storeLinks": {
+        "googlePlay": {
+          "enabled": true,
+          "buttonText": "Google Play",
+          "url": "#"
+        },
+        "appStore": {
+          "enabled": true,
+          "buttonText": "App Store",
+          "url": "#"
+        }
+      },
+      "accentColor": "#10B981",
+      "infoStrip": {
+        "playStyle": "Portrait",
+        "platform": "iOS & Android",
+        "session": "2-4 mins"
+      },
+      "whatIsIt": [
+        "Vibrant match-3 bubble shooter mechanics",
+        "Dozens of cute bugs: bees, ladybugs, butterflies & snails",
+        "Exciting booster tools like Bug Hammer & Rainbow Bugs",
+        "Hundreds of handcrafted garden levels",
+        "Smooth offline play anytime, anywhere"
+      ],
+      "audienceCards": [
+        "Casual Puzzle Gamers",
+        "Bubble Shooter Fans",
+        "Kids & Family",
+        "High Score Seekers"
+      ],
+      "whyPlay": {
+        "heading": "Pop, Match, and Relax.",
+        "subheading": "Simple controls, vibrant animations, and endlessly satisfying pops.",
+        "points": [
+          "Addictive Match-3 Action",
+          "Satisfying Power-Ups",
+          "Over 200+ Fun Levels",
+          "Relaxing Garden Gameplay"
+        ]
+      },
+      "sectionOrder": [
+        {
+          "id": "s1",
+          "type": "hero",
+          "visible": true,
+          "order": 1
+        },
+        {
+          "id": "s2",
+          "type": "infoStrip",
+          "visible": true,
+          "order": 2
+        },
+        {
+          "id": "s3",
+          "type": "whatIsIt",
+          "visible": true,
+          "order": 3
+        },
+        {
+          "id": "s4",
+          "type": "screenshots",
+          "visible": true,
+          "order": 4
+        },
+        {
+          "id": "s5",
+          "type": "howItWorks",
+          "visible": true,
+          "order": 5
+        },
+        {
+          "id": "s6",
+          "type": "whyPlay",
+          "visible": true,
+          "order": 6
+        },
+        {
+          "id": "s7",
+          "type": "audience",
+          "visible": true,
+          "order": 7
+        },
+        {
+          "id": "s8",
+          "type": "features",
+          "visible": true,
+          "order": 8
+        },
+        {
+          "id": "s9",
+          "type": "storeCta",
+          "visible": true,
+          "order": 9
+        },
+        {
+          "id": "s10",
+          "type": "moreGames",
+          "visible": true,
+          "order": 10
+        }
+      ],
+      "status": "Published",
+      "featured": true,
+      "sortOrder": 5,
+      "privacyPolicy": {
+        "title": "Privacy Policy for Bug Pop Shooter",
+        "content": "Effective Date: September 8, 2026\n\nThis Privacy Policy explains how 1D Brain Games (\"we\", \"us\", or \"our\") handles information in connection with the mobile game Bug Pop Shooter (\"the Game\"), including the Android version and web version.\n\nWe respect your privacy and are committed to protecting the information associated with the Game.\n\nBy using Bug Pop Shooter, you acknowledge the practices described in this Privacy Policy.\n\n1. About Bug Pop Shooter\n\nBug Pop Shooter is a casual puzzle game in which players aim, match, and pop colorful cartoon bugs and insects.\n\nThe Game may be available on:\n\nAndroid phones\nAndroid tablets\nWeb browsers\nGoogle Chrome\nOther supported platforms\n\nThe Game may contain advertising, including:\n\nBanner advertisements\nInterstitial advertisements\nRewarded advertisements\n\nSome advertisements and related technologies are provided by third-party advertising providers such as Google AdMob.\n\n2. Information We Collect\n\nWe aim to keep Bug Pop Shooter simple and do not require users to create an account to play the Game.\n\nWe do not intentionally ask players to provide:\n\nFull name\nHome address\nPhone number\nPassword\nEmail address for gameplay\nGovernment identification\nPayment card information\nPrecise GPS location\n\nThe Game may, however, process certain information automatically through the Game itself, the device/platform, and third-party services such as advertising or analytics SDKs.\n\nThe exact information processed can depend on the platform, SDK configuration, advertising settings, user consent, and applicable law.\n\n3. Information Stored Locally\n\nBug Pop Shooter may store certain game information locally on the user's device.\n\nThis may include:\n\nCurrent level\nHighest unlocked level\nGame progress\nCoins\nPower-ups\nAchievements\nDaily reward progress\nGame settings\nSound settings\nMusic settings\nVibration settings\nOther gameplay preferences\n\nThis information is used to provide game functionality and save the player's progress.\n\nLocal game data generally remains on the device unless the Game or a third-party service specifically transmits information for another purpose.\n\n4. Advertising\n\nBug Pop Shooter is supported by advertising.\n\nWe may use Google AdMob or other approved advertising technologies to display advertisements.\n\nAdvertisements may include:\n\nBanner ads\nInterstitial ads\nRewarded ads\n\nFor example, a player may voluntarily watch a rewarded advertisement to receive an in-game reward such as coins, an additional attempt, additional shots, or another available reward.\n\nAdvertising providers may automatically process certain information from a device or advertising request for purposes such as:\n\nDelivering advertisements\nMeasuring advertising performance\nPreventing fraud\nLimiting advertisement frequency\nMaintaining advertising services\nProviding contextual or, where legally permitted and appropriately configured, personalized advertising\n\nGoogle explains that its advertising services may involve technologies such as identifiers, IP addresses, cookies or similar technologies.\n\nWe configure advertising services in accordance with applicable Google Play, AdMob, privacy, and child-safety requirements.\n\n5. Children's Privacy\n\nBug Pop Shooter is designed to be a family-friendly game and may be used by children.\n\nWe do not intentionally collect personal information directly from children for account creation, and the Game does not require children to provide personal information to play.\n\nBecause children may use the Game, we take additional steps intended to comply with applicable children's privacy requirements and Google Play's Families Policy.\n\nGoogle Play requires apps that include children in their target audience to follow additional requirements regarding data practices, advertising, and third-party SDKs.\n\nWhere applicable, advertising requests and advertising behavior are configured according to the user's applicable age treatment and legal requirements.\n\nWe do not knowingly use children's personal information for behavioral advertising or interest-based advertising where prohibited by applicable law or platform policies.\n\nGoogle's policies prohibit personalized advertising based on activity from users known to be under 13 or activity on child-directed apps.\n\n6. Mixed-Audience Users\n\nBug Pop Shooter is intended to be enjoyable by a broad audience, including children and adults.\n\nWhere required, we may use an appropriate age-treatment or neutral age-screening mechanism before certain advertising or data-processing functionality.\n\nThis helps us determine the appropriate privacy and advertising treatment where required by applicable law or platform policy.\n\nWe do not use an age screen to intentionally collect unnecessary personal information from children.\n\n7. Google AdMob\n\nWe may use Google AdMob to display advertisements.\n\nGoogle and its advertising partners may process information associated with advertising requests, subject to Google's applicable policies and the settings we configure.\n\nDepending on the applicable user, platform, consent status, and advertising configuration, this may include information such as:\n\nIP address\nAdvertising or app-related identifiers\nDevice information\nApproximate location information\nAdvertising interaction information\nInformation related to ad delivery and measurement\n\nGoogle states that advertising identifiers and other pseudonymous information can be used in advertising systems, while its policies also restrict the use of personally identifiable information and impose additional requirements for children.\n\nWe do not intentionally send users' names, email addresses, phone numbers, passwords, or other directly identifying information to Google through Bug Pop Shooter's advertising requests.\n\nFor more information about Google's handling of information, please review Google's applicable privacy information:\n\nGoogle Privacy Policy\n\n8. Advertising Consent\n\nDepending on the user's location and applicable privacy laws, we may request consent before certain types of advertising or data processing.\n\nFor users in regions such as the European Economic Area, the United Kingdom, or Switzerland, applicable consent mechanisms may be used for advertising and privacy choices.\n\nGoogle provides consent-management functionality for publishers using AdMob.\n\nWhere consent is required, users may be provided with choices regarding personalized advertising and applicable data processing.\n\n9. Non-Personalized Advertising\n\nWhere required or selected, advertisements may be served as non-personalized advertisements.\n\nNon-personalized advertising generally uses contextual information rather than a user's previous activity for personalization.\n\nGoogle's advertising documentation explains that non-personalized advertising and restricted-data-processing configurations can limit certain forms of personalized advertising and audience targeting.\n\n10. Rewarded Advertisements\n\nBug Pop Shooter may provide optional rewarded advertisements.\n\nFor example:\n\nWatch an advertisement → Receive coins\n\nor:\n\nWatch an advertisement → Continue the level\n\nRewarded advertisements are optional.\n\nThe Game does not require a player to watch a rewarded advertisement in order to play the basic game.\n\nThe advertising provider may process information necessary to deliver and verify the rewarded advertisement.\n\n11. Analytics\n\nOnly keep this section if the final Game actually uses an analytics SDK.\n\nWe may use analytics services to understand how the Game is used and to improve gameplay, stability, and performance.\n\nAnalytics information may include:\n\nGame session information\nLevel starts\nLevel completions\nLevel failures\nGeneral gameplay events\nCrash or performance information\nDevice/platform information\nApproximate geographic information where provided by the analytics service\n\nWe do not intentionally collect names, phone numbers, or email addresses through gameplay analytics.\n\nIMPORTANT FOR THE DEVELOPER: If Bug Pop Shooter does not use Firebase Analytics, Google Analytics, Unity Analytics, GameAnalytics, or another analytics SDK, remove this section before publishing.\n\n12. Crash Reporting\n\nOnly keep this section if a crash-reporting SDK is actually installed.\n\nWe may use a crash-reporting service to identify crashes and technical problems.\n\nSuch a service may automatically process technical information such as:\n\nDevice model\nOperating system version\nApplication version\nCrash information\nPerformance information\nDiagnostic information\n\nThis information is used to identify and fix technical problems.\n\nIMPORTANT FOR THE DEVELOPER: Remove this section if no crash-reporting service is included in the final production build.\n\n13. Third-Party Services\n\nBug Pop Shooter may use third-party services to provide advertising, platform functionality, analytics, crash reporting, or other technical services.\n\nDepending on the final version of the Game, these may include:\n\nGoogle Play Services\nGoogle AdMob\nGoogle Play Console-related services\nConsent-management services\nAnalytics services\nCrash-reporting services\n\nThird-party providers process information according to their own privacy policies and applicable agreements.\n\nWe recommend reviewing their policies for additional information.\n\n14. Google Play Services\n\nThe Android version of Bug Pop Shooter may use Google Play Services and other Android platform services.\n\nThese services may process technical information required for:\n\nApplication distribution\nSecurity\nAdvertising\nDevice functionality\nUpdates\nCrash prevention\nOther platform functionality\n\nGoogle's privacy policy explains how Google handles information across its services:\n\nGoogle Privacy Policy\n\n15. Web Version\n\nBug Pop Shooter may also be available through web browsers.\n\nThe web version may use browser storage technologies such as local storage to save game progress and settings.\n\nThe web version may also use advertising technologies if advertising is enabled on the website.\n\nDepending on the advertising and website configuration, third-party services may use cookies, similar technologies, IP addresses, or other identifiers.\n\nUsers can manage certain cookie and browser permissions through their browser settings.\n\n16. Cookies and Similar Technologies\n\nThe web version may use cookies, local storage, or similar technologies.\n\nThese technologies may be used for:\n\nSaving game settings\nSaving game progress\nWebsite functionality\nAdvertising\nMeasuring advertising performance\nSecurity\nUnderstanding technical problems\n\nThird-party advertising providers may also use cookies or similar technologies where permitted.\n\nGoogle requires publishers using its products to provide appropriate disclosures regarding technologies such as cookies, web beacons, IP addresses, and identifiers.\n\n17. What We Do Not Do\n\nWe do not intentionally:\n\nSell users' names or contact information\nRequire users to create an account to play\nAsk children for their home address\nAsk children for their phone number\nAsk children for passwords\nRequest precise GPS location for gameplay\nCollect microphone recordings for gameplay\nCollect camera recordings for gameplay\nCollect contacts/address books for gameplay\nCollect SMS or call logs for gameplay\n\nWe also do not intentionally use the Game to identify individual players by their real-world identity.\n\n18. Location Information\n\nBug Pop Shooter does not require precise GPS location to provide its core gameplay.\n\nWe do not intentionally request precise location from users for gameplay.\n\nAdvertising or third-party services may independently process approximate location information derived from network or device information where permitted and necessary for their services.\n\nIf precise location functionality is ever added, this Privacy Policy will be updated before or when that functionality is introduced.\n\n19. Data Sharing\n\nWe do not sell personal information to third parties.\n\nHowever, information may be transmitted to or processed by third-party service providers when necessary to provide their services.\n\nFor example:\n\nAdvertising providers may process advertising-related information.\nAnalytics providers may process analytics information if analytics are enabled.\nCrash-reporting providers may process diagnostic information if crash reporting is enabled.\nPlatform providers may process information necessary to operate their services.\n\nThe information shared depends on the services actually integrated into the final version of Bug Pop Shooter.\n\n20. Data Security\n\nWe take reasonable measures to protect information processed through the Game.\n\nWe use appropriate technical and organizational measures where reasonably practicable.\n\nHowever, no electronic transmission, storage system, or internet service can be guaranteed to be completely secure.\n\nWe cannot guarantee absolute security of information transmitted through third-party services.\n\n21. Data Retention\n\nGame progress stored locally remains on the user's device until it is deleted, overwritten, or removed through normal device/application behavior.\n\nThird-party service providers may retain information according to their own policies and retention practices.\n\nWhere we control information directly, we retain it only for as long as reasonably necessary for the purposes described in this Privacy Policy or as required by law.\n\n22. Your Privacy Choices\n\nDepending on your location and applicable law, you may have rights concerning your personal information.\n\nThese may include rights to:\n\nRequest access to information\nRequest correction\nRequest deletion\nObject to certain processing\nWithdraw consent where processing is based on consent\nRequest information about data processing\n\nSome rights may be subject to legal limitations.\n\nYou may also control certain advertising preferences through:\n\nDevice settings\nBrowser settings\nAvailable consent-management tools\nAdvertising provider settings\n23. Children's Privacy Rights\n\nIf you are a parent or legal guardian and believe that a child has provided us with personal information directly, please contact us.\n\nWe will review the request and take appropriate action where required by applicable law.\n\nBecause Bug Pop Shooter does not require children to create accounts or submit personal information to play, we aim to minimize the collection of information from children.\n\n24. Parents and Guardians\n\nParents and guardians who have questions about Bug Pop Shooter's privacy practices may contact us using the contact information below.\n\nIf you believe that your child has provided personal information to us in a way that you did not authorize, please contact us.\n\nWe will take reasonable steps to investigate the matter and address it as required by applicable law.\n\n25. International Users\n\nBug Pop Shooter may be used by people in different countries.\n\nDepending on where you use the Game, different privacy laws may apply.\n\nThese may include, where applicable:\n\nGDPR\nUK GDPR\nChildren's Online Privacy Protection Act (COPPA)\nApplicable U.S. state privacy laws\nIndia's Digital Personal Data Protection framework\nOther applicable privacy and consumer-protection laws\n\nWe aim to operate the Game in accordance with applicable laws and platform requirements.\n\n26. European Economic Area, United Kingdom and Switzerland\n\nIf you are located in the European Economic Area, United Kingdom, or Switzerland, applicable privacy laws may provide additional rights.\n\nWhere legally required, we may request consent before processing information for certain advertising purposes.\n\nYou may have rights including:\n\nAccess\nCorrection\nDeletion\nRestriction\nObjection\nData portability\nWithdrawal of consent\n\nYou may exercise applicable rights by contacting us.\n\nYou may also have the right to lodge a complaint with your local data-protection authority.\n\n27. United States Privacy Rights\n\nDepending on where you live in the United States, state privacy laws may provide additional rights.\n\nThese may include rights to:\n\nKnow what personal information is collected\nRequest deletion\nRequest correction\nOpt out of certain forms of targeted advertising\nOpt out of certain sales or sharing of personal information where applicable\n\nThe exact rights available depend on applicable state law.\n\nWe will respond to valid requests as required by applicable law.\n\n28. India\n\nIf you are located in India, applicable Indian data-protection and privacy laws may provide rights concerning personal data.\n\nWe will process information in accordance with applicable legal requirements.\n\nIf applicable law provides you with additional rights, you may contact us using the information below.\n\n29. Third-Party Privacy Policies\n\nThe following third-party services may have their own privacy policies:\n\nGoogle\n\nGoogle Privacy Policy\n\nGoogle AdMob\n\nGoogle AdMob Privacy and Policies\n\nGoogle Play\n\nGoogle Play Privacy Information\n\nIf additional third-party services are added to Bug Pop Shooter, this Privacy Policy may be updated to identify them.\n\n30. Changes to This Privacy Policy\n\nWe may update this Privacy Policy from time to time.\n\nWhen we make changes, we will update the:\n\nLast Updated\n\ndate at the top of this policy.\n\nIf significant changes are made, we may provide additional notice where required by applicable law.\n\nWe encourage users and parents/guardians to periodically review this Privacy Policy.\n\n31. Contact Us\n\nIf you have questions, concerns, requests, or complaints regarding this Privacy Policy or Bug Pop Shooter's privacy practices, please contact us.\n\nDeveloper / Company:\n1D Brain Games\n\nGame:\nBug Pop Shooter",
+        "enabled": true,
+        "slug": "bug-pop-shooter-privacy",
+        "lastUpdated": "2026-09-08"
+      },
+      "termsAndConditions": {
+        "enabled": true,
+        "title": "Bug Pop Shooter Terms & Conditions",
+        "content": "Terms and Conditions for Bug Pop Shooter\n\n1. Acceptance of Terms\nBy downloading, installing, or playing Bug Pop Shooter, you agree to comply with these terms.\n\n2. License\nWe grant you a personal, non-exclusive, non-transferable, revocable license to play Bug Pop Shooter for personal, non-commercial entertainment.\n\n3. Virtual Items & Boosters\nIn-game coins, Bug Hammers, and boosters earned or acquired in the game are virtual items with no real-world monetary value.\n\n4. Changes\nWe reserve the right to modify or update the game and these terms at any time.\n\n5. Contact\nFor support or inquiries, please reach out to viictoriaahiils@gmail.com.",
+        "lastUpdated": "2026-09-08",
+        "slug": "bug-pop-shooter-terms"
+      },
+      "whatsapp": {
+        "enabled": false,
+        "message": "Hi, I want to know more about Bug Pop Shooter.",
+        "number": ""
+      },
+      "seo": {
+        "title": "Bug Pop Shooter - Match-3 Bubble Puzzle Game | 1D Brain Games",
+        "description": "Aim, match, and pop cute bugs in Bug Pop Shooter! Explore hundreds of levels and power up your shots.",
+        "noIndex": false
+      },
+      "createdAt": "2026-09-08T15:00:00.000Z",
+      "updatedAt": "2026-09-08T10:01:36.197Z"
     }
   ],
   "pages": [

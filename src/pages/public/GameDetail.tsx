@@ -27,7 +27,7 @@ export function GameDetail() {
 
   useEffect(() => {
     if (data && data.games) {
-      const foundGame = data.games.find(g => g.slug === slug && g.status === 'Published');
+      const foundGame = data.games.find(g => (g.slug === slug || (slug === 'bubble-pop-shooter' && g.slug === 'bug-pop-shooter') || (slug === 'bug-pop-shooter' && g.slug === 'bubble-pop-shooter')) && g.status === 'Published');
       setGame(foundGame || null);
       setLoading(false);
     }
